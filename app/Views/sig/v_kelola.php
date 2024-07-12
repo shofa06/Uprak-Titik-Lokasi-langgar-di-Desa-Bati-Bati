@@ -34,79 +34,80 @@
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $value['idtambahan']; ?>">Hapus</button>
                         </td>
                     </tr>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal<?= $value['idtambahan']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?= $value['idtambahan']; ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?= base_url('kelola/updatedata/' . $value['idtambahan']) ?>" method="post">
+                                    <?= csrf_field(); ?>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel<?= $value['idtambahan']; ?>">Edit Data</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="nama<?= $value['idtambahan']; ?>" class="form-label">Nama</label>
+                                            <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['nama'] ? 'is-invalid' : '' ?>" id="nama<?= $value['idtambahan']; ?>" name="nama" value="<?= esc(old('nama', $value['nama'])); ?>">
+                                            <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['nama']) : ?>
+                                                <div class="invalid-feedback">
+                                                    <?= session()->getFlashdata('errors')['nama'] ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="latitude<?= $value['idtambahan']; ?>" class="form-label">Latitude</label>
+                                            <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['latitude'] ? 'is-invalid' : '' ?>" id="latitude<?= $value['idtambahan']; ?>" name="latitude" value="<?= esc(old('latitude', $value['latitude'])); ?>">
+                                            <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['latitude']) : ?>
+                                                <div class="invalid-feedback">
+                                                    <?= session()->getFlashdata('errors')['latitude'] ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="longitude<?= $value['idtambahan']; ?>" class="form-label">Longitude</label>
+                                            <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['longitude'] ? 'is-invalid' : '' ?>" id="longitude<?= $value['idtambahan']; ?>" name="longitude" value="<?= esc(old('longitude', $value['longitude'])); ?>">
+                                            <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('errors')['longitude']) : ?>
+                                                <div class="invalid-feedback">
+                                                    <?= session()->getFlashdata('errors')['longitude'] ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">Edit Data</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal<?= $value['idtambahan']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $value['idtambahan']; ?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="<?= base_url('kelola/delete/' . $value['idtambahan']) ?>" method="post">
+                                    <?= csrf_field(); ?>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel<?= $value['idtambahan']; ?>">Hapus Data</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 <?php endforeach; ?>
             </tbody>
-            
         </table>
-
-        <!-- Edit Modal -->
-        <div class="modal fade" id="editModal<?= $value['idtambahan']; ?>" tabindex="-1" aria-labelledby="editModalLabel<?= $value['idtambahan']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="<?= base_url('kelola/updatedata/' . $value['idtambahan']) ?>" method="post">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel<?= $value['idtambahan']; ?>">Edit Data</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('nama') ? 'is-invalid' : '' ?>" id="nama" name="nama" value="<?= esc(old('nama', $value['nama'])); ?>">
-                                <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('nama')) : ?>
-                                    <div class="invalid-feedback">
-                                        <?= session()->getFlashdata('nama') ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="mb-3">
-                                <label for="latitude" class="form-label">Latitude</label>
-                                <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('latitude') ? 'is-invalid' : '' ?>" id="latitude" name="latitude" value="<?= esc(old('latitude', $value['latitude'])); ?>">
-                                <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('latitude')) : ?>
-                                    <div class="invalid-feedback">
-                                        <?= session()->getFlashdata('latitude') ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="mb-3">
-                                <label for="longitude" class="form-label">Longitude</label>
-                                <input type="text" class="form-control <?= session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('longitude') ? 'is-invalid' : '' ?>" id="longitude" name="longitude" value="<?= esc(old('longitude', $value['longitude'])); ?>">
-                                <?php if (session()->getFlashdata('error') && session()->getFlashdata('idtambahan') == $value['idtambahan'] && session()->getFlashdata('longitude')) : ?>
-                                    <div class="invalid-feedback">
-                                        <?= session()->getFlashdata('longitude') ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Edit Data</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Delete Modal -->
-        <div class="modal fade" id="deleteModal<?= $value['idtambahan']; ?>" tabindex="-1" aria-labelledby="deleteModalLabel<?= $value['idtambahan']; ?>" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="<?= base_url('kelola/delete/' . $value['idtambahan']) ?>" method="post">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel<?= $value['idtambahan']; ?>">Hapus Data</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-danger">Hapus</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -115,6 +116,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="<?= base_url('kelola/insertdata') ?>" method="post">
+                <?= csrf_field(); ?>
                 <div class="modal-header">
                     <h5 class="modal-title" id="addModalLabel">Tambah Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

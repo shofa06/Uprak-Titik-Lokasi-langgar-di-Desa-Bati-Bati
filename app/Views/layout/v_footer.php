@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="footer mt-auto py-3 bg-dark">
     <div class="container text-center">
-        <p class="text-light mb-0">  Sistem Informasi Geografis | Shofa</p>
+        <p class="text-light mb-0">  Sistem Informasi Geografis | Noor Shofa Safila</p>
     </div>
 </footer>
 

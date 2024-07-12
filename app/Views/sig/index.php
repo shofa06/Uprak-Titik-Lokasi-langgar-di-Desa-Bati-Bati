@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    var map = L.map('map').setView([-3.614174035043423, 114.70011802840635], 13);
+    var map = L.map('map').setView([-3.614174035043423, 114.70011802840635], 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         subdomains: ['a', 'b', 'c']
@@ -67,7 +67,7 @@
                 L.geoJSON(data, {
                     style: function(feature) {
                         return {
-                            color: 'blue', // Warna garis tepi
+                            color: 'Red', // Warna garis tepi
                             fillColor: 'cyan', // Warna isi
                             fillOpacity: 0.5 // Opasitas isi
                         };
