@@ -26,16 +26,7 @@
         subdomains: ['a', 'b', 'c']
     }).addTo(map);
 
-    // Menambahkan titik koordinat baru
-    // var marker1 = L.marker([114.7010706922332, -3.6115514844746883]).addTo(map)
-    //         .bindPopup('<b>Langgar_Darusalam</b><br />Koordinat:-3.6115514844746883 114.7010706922332').openPopup();
-    
-    // var marker1 = L.marker([114.7014544090299, -3.6156015152695318]).addTo(map)
-    //         .bindPopup('<b>Langgar_Darul_Aman </b><br />Koordinat:-3.6156015152695318 114.7014544090299').openPopup();
-
-    // var marker1 = L.marker([114.70264526816715,-3.609868371206602]).addTo(map)
-    //         .bindPopup('<b>Langgar_Siratul_Muhtaqin </b><br />Koordinat:-3.609868371206602 114.70264526816715').openPopup();
-    
+   
     
 
     <?php foreach ($kelola as $value) : ?>
@@ -76,15 +67,7 @@
             })
             .catch(error => console.log(error));
 
-    // L.geoJSON(geojsonData, {
-    //     style: function(feature) {
-    //         return {
-    //             color: 'blue', // Border color
-    //             fillColor: 'cyan', // Fill color
-    //             fillOpacity: 0.5 // Opacity of the fill
-    //         };
-    //     }
-    // }).addTo(map);
+   
     
 </script>
 <?php echo view('layout/v_footer'); ?>
