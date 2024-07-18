@@ -14,9 +14,9 @@
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
-    });
+    }); // metode yang dijalankan ketika halaman HTML sudah dimuat
 
-    <?php if (session()->getFlashdata('error')) : ?>
+    <?php if (session()->getFlashdata('error')) : ?> // memeriksa apakah ada pesan kesalahan yang diset untuk ditampilkan.
         var addModal = new bootstrap.Modal(document.getElementById('addModal'), {
             keyboard: false
         });

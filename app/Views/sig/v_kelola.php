@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
+                    <th>Nama Data</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Aksi</th>
@@ -23,7 +23,7 @@
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($kelola as $value) : ?>
+                <?php foreach ($kelola as $value) : ?> 
                     <tr>
                         <td scope="row"><?= $i++; ?></td>
                         <td><?= esc($value['nama']); ?></td>
@@ -40,7 +40,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="<?= base_url('kelola/updatedata/' . $value['idtambahan']) ?>" method="post">
-                                    <?= csrf_field(); ?>
+                                    <?= csrf_field(); ?> 
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="editModalLabel<?= $value['idtambahan']; ?>">Edit Data</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

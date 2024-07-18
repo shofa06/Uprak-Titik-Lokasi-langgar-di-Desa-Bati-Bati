@@ -20,16 +20,24 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    var map = L.map('map').setView([-3.614174035043423, 114.70011802840635], 15);
+    var map = L.map('map').setView([-3.614174035043423, 114.70011802840635], 17);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         subdomains: ['a', 'b', 'c']
     }).addTo(map);
 
-   
-    
+    var greenIcon = L.icon({
+    iconUrl: 'leaf-green.png',
+    shadowUrl: 'leaf-shadow.png',
 
-    <?php foreach ($kelola as $value) : ?>
+    iconSize:     [38, 95], 
+    shadowSize:   [50, 64], 
+    iconAnchor:   [22, 94], 
+    shadowAnchor: [4, 62],  
+    popupAnchor:  [-3, -76] 
+});
+    
+    <?php foreach ($kelola as $value) : ?> // nilai dari elemen array
         var marker = L.marker([<?= esc($value['latitude']); ?>, <?= esc($value['longitude']); ?>]).addTo(map); // manggil marker
         marker.bindPopup("<b><?= esc($value['nama']); ?></b>").openPopup(); // manggil popup
     <?php endforeach; ?>
@@ -43,7 +51,7 @@
     //             "coordinates": [
     //                 [
     //                     <?php foreach ($polygon as $value) : ?>[<?= esc($value['latitude']); ?>, <?= esc($value['longitude']); ?>],
-    //                     <?php endforeach; ?>
+    //                     <?php endforeach; ?> // Setiap elemen array tersebut diakses sebagai variabel $value.
     //                 ]
     //             ],
     //             "type": "Polygon"
@@ -58,7 +66,7 @@
                 L.geoJSON(data, {
                     style: function(feature) {
                         return {
-                            color: 'Red', // Warna garis tepi
+                            color: 'Blue', // Warna garis tepi
                             fillColor: 'cyan', // Warna isi
                             fillOpacity: 0.5 // Opasitas isi
                         };
